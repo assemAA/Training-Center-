@@ -1,0 +1,35 @@
+﻿@model List<Instractor>
+
+
+
+<style>
+
+    img {
+        height : 300px;
+        
+    }
+</style>
+
+<div>
+    <a href="/Instractor/newIns"  class="btn btn-primary"> New Instractor <a/>
+    <br />
+</div>
+
+
+<div class="container ">
+    <div class="row justify-content-md-center">
+        @foreach (Instractor ins in Model)
+        {
+            <div class="card col col-sm-12 col-lg-4" style="width: 18rem;">
+                <img src="@ins.imag" class="card-img-top" alt="product">
+                <div class="card-body">
+                    <h5 class="card-title">@ins.name</h5>
+                    <p class="card-text">@ins.address</p>
+                    <a href="/Instractor/details/@ins.id" class="btn btn-primary">Details</a>
+                    <a href="/Instractor/edit/@ins.id" class="btn btn-warning">Edit</a>
+                </div>
+            </div>
+        }
+    </div>
+   
+</div>

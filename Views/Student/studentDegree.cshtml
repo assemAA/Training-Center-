@@ -1,0 +1,25 @@
+﻿@using ITI_Project.viewModels
+@model StudentGradeViewModel
+
+<h1>student degree</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th scope="col">StudentName</th>
+            <th scope="col">Course</th>
+            <th scope="col">degree</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            
+            <td>@Model.trainneeName</td>
+            <td>@Model.coureName</td>
+            <td style="color : @Model.color">@Model.studentDegree</td>
+       
+    </tbody>
+</table>
+
+

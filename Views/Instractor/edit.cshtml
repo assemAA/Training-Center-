@@ -1,0 +1,51 @@
+﻿@using ITI_Project.viewModels
+@model InstractorDepartementviewModel
+
+<form method="post" action="/Instractor/edit/@Model.Id">
+    <div>
+        <div class="form-floating">
+            <input type="text" value="@Model?.Ins_name" class="form-control" placeholder="Enter Instarctor Name " id="floatingTextarea" name="name"></input>
+            <label for="floatingTextarea">Instractor Name </label>
+        </div>
+
+
+        <div class="form-floating mb-3">
+            <input type="text" value="@Model?.Ins_address" class="form-control" id="floatingInput" placeholder="Enter Instractor Address" name="address">
+            <label for="floatingInput"> Instractor Address </label>
+        </div>
+
+
+
+
+        <div class="form-floating mb-3">
+            <input type="text" value="@Model?.Ins_salary" class="form-control" id="floatingInput" placeholder="Enter Instractor Salary" name="salary">
+            <label for="floatingInput"> Instractor Salary </label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" value="@Model?.Ins_imag" class="form-control" id="floatingInput" placeholder="Enter Instractor Image path" name="imag">
+            <label for="floatingInput"> Instractor Imag </label>
+        </div>
+
+        <div>
+            <label for="departement">Choose a departement:</label>
+
+            <select name="dept_id" id="departement">
+                @foreach (var item in Model.departements)
+                {
+                    <option value="@item.id"> @item.name</option>
+                }
+
+
+            </select>
+        </div>
+
+
+
+    </div>
+
+    <div>
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+
+</form>

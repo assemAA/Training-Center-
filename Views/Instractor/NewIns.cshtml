@@ -1,0 +1,86 @@
+﻿@model Instractor
+
+@{
+    SelectList courses = new SelectList(ViewBag.Courses, "Id", "name");
+}
+<form method="post" action="/Instractor/NewIns">
+    <div>
+        <div class="form-floating">
+            <input type="text" value="@Model?.name" class="form-control" placeholder="Enter Instarctor Name " id="floatingTextarea" name="name"></input>
+            <label for="floatingTextarea">Instractor Name </label>
+        </div>
+
+       
+            <div class="form-floating mb-3">
+            <input type="text" value="@Model?.address" class="form-control" id="floatingInput" placeholder="Enter Instractor Address" name="address">
+                <label for="floatingInput"> Instractor Address </label>
+            </div>
+
+       
+
+
+         <div class="form-floating mb-3">
+            <input type="text" value="@Model?.salary" class="form-control" id="floatingInput" placeholder="Enter Instractor Salary" name="salary">
+                 <label for="floatingInput"> Instractor Salary </label>
+          </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" value="@Model?.imag" class="form-control" id="floatingInput" placeholder="Enter Instractor Image path" name="imag">
+            <label for="floatingInput"> Instractor Imag </label>
+        </div>
+
+        <div>
+            <label for="departement">Choose a departement:</label>
+
+            <select name="dept_id" id="departement" onchange="getCourses()">
+                @foreach (var item in ViewBag.departements as List<Departement>)
+                {
+                    <option value="@item.id"> @item.name</option>
+                }
+                
+                
+            </select>
+        </div>
+        
+        <div>
+            <p> Choose Courses </p>
+            <select class="form-control" id="CourseSelect">
+
+            </select>
+        </div>
+       
+
+
+        
+    </div>
+    
+
+
+</form>
+
+@section Scripts{
+   
+        <script src="/lib/jquery/dist/jquery.js"> </script>
+        
+    <script>
+        function getCourses() {
+            console.log("ggggggggg");
+            var deptID = $("#departement").val();
+            console.log(deptID);
+            $("#CourseSelect").html("");
+            $.ajax({
+                url: "/Instractor/getCoursesByDeptId",
+
+                data: { "dept_id": dept_id },
+                success: function (result) {
+                    //Json
+                    console.log(result);
+                    for (let item of result) {
+                        $("#CourseSelect").append("<option value=" + item.id + ">" + item.name + "</option>")
+                    }
+                    //$("#div1").html(result);
+                }
+            });
+        }
+    </script>
+}
